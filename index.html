@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Telemedicine Monitoring System</title>
+  <meta
+    name="description"
+    content="ESP32-Based Smart Telemedicine Monitoring System for real-time heart rate, SpO2, temperature, movement, and fall detection with cloud dashboard access."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero" id="home">
+      <nav class="topbar">
+        <a class="brand" href="#home" aria-label="Smart Telemedicine Monitoring System home">
+          <span class="brand-mark">+</span>
+          <span>Smart Telemedicine</span>
+        </a>
+        <div class="nav-links">
+          <a href="#overview">About</a>
+          <a href="#sensors">Sensors</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#dashboard">Dashboard</a>
+          <a href="#future">Future Scope</a>
+        </div>
+      </nav>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">ESP32-Based Healthcare Innovation</p>
+          <h1>Remote patient monitoring built for timely care, safer recovery, and smarter response.</h1>
+          <p class="lead">
+            The Smart Telemedicine Monitoring System is an IoT-enabled healthcare solution that continuously
+            tracks heart rate, SpO2, body temperature, movement, and fall events in real time. It helps doctors,
+            caregivers, and families stay informed through a cloud-connected dashboard designed for remote care.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#dashboard">Open Live Dashboard</a>
+            <a class="button button-secondary" href="#overview">Read Project Overview</a>
+          </div>
+          <div class="hero-ribbon">
+            <span>Real-time vital tracking</span>
+            <span>Fall detection alerts</span>
+            <span>Firebase cloud monitoring</span>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="signal-card">
+            <div class="signal-head">
+              <span class="signal-badge">Live Monitoring Snapshot</span>
+              <span class="mini-status">Cloud Ready</span>
+            </div>
+            <h2>Patient status at a glance</h2>
+            <p>
+              The ESP32 collects sensor data, timestamps it with the RTC module, and pushes it to the cloud
+              for continuous monitoring through this dashboard.
+            </p>
+            <div class="status-grid">
+              <div class="status-box">
+                <span>Heart Rate</span>
+                <strong id="hero-heart-rate">78 BPM</strong>
+              </div>
+              <div class="status-box">
+                <span>SpO2 Level</span>
+                <strong id="hero-spo2">98%</strong>
+              </div>
+              <div class="status-box">
+                <span>Movement</span>
+                <strong id="hero-movement">Active</strong>
+              </div>
+              <div class="status-box alert-box">
+                <span>Fall Status</span>
+                <strong id="hero-fall">Normal</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="section intro-strip">
+        <article>
+          <strong>24/7 Monitoring</strong>
+          <span>Continuous health observation for home and hospital care.</span>
+        </article>
+        <article>
+          <strong>4 Core Sensors</strong>
+          <span>Vitals, temperature, movement, and accurate timestamping.</span>
+        </article>
+        <article>
+          <strong>Remote Access</strong>
+          <span>Doctors and caregivers can view patient data from anywhere.</span>
+        </article>
+      </section>
+
+      <section class="section overview" id="overview">
+        <div class="section-heading narrow">
+          <p class="eyebrow">About The Project</p>
+          <h2>Low-cost telemedicine technology for reliable remote patient care.</h2>
+          <p class="section-copy">
+            The ESP32-Based Telemedicine Monitoring System is designed to detect health issues early and support
+            timely intervention. It continuously measures a patient’s vital parameters, stores them in the cloud,
+            and presents them in an accessible web interface for real-time healthcare monitoring.
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <article class="info-card">
+            <h3>What it monitors</h3>
+            <p>
+              The system tracks heart rate, blood oxygen saturation, body temperature, and patient movement,
+              while also identifying sudden falls for emergency response support.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Why it matters</h3>
+            <p>
+              It improves visibility for caregivers and medical staff, especially when patients are at home,
+              recovering after hospitalization, or living in remote and low-resource areas.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Where it helps most</h3>
+            <ul>
+              <li>Elderly care and fall monitoring</li>
+              <li>Post-hospitalization observation</li>
+              <li>Remote healthcare services</li>
+              <li>Rural and low-resource communities</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section features" id="features">
+        <div class="section-heading">
+          <p class="eyebrow">Key Features</p>
+          <h2>Core capabilities that make the system practical and responsive.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-icon">HR</span>
+            <h3>Heart Rate Monitoring</h3>
+            <p>Continuous pulse tracking helps detect cardiovascular changes and supports daily remote observation.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">O2</span>
+            <h3>SpO2 Monitoring</h3>
+            <p>Blood oxygen levels are measured in real time to highlight respiratory issues or oxygen drops quickly.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">TMP</span>
+            <h3>Contactless Temperature</h3>
+            <p>The MLX90614 sensor enables non-contact temperature measurement for safe and convenient fever tracking.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">MOV</span>
+            <h3>Movement Analysis</h3>
+            <p>Patient movement is monitored to understand activity levels, inactivity, and changes in posture.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">ALR</span>
+            <h3>Automatic Fall Detection</h3>
+            <p>Acceleration and orientation data are used to detect sudden falls and trigger emergency alerts.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">RTC</span>
+            <h3>Accurate Timestamp Logging</h3>
+            <p>The DS3231 RTC module records exact time information for every measurement and event.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section sensors" id="sensors">
+        <div class="section-heading">
+          <p class="eyebrow">System Overview</p>
+          <h2>Each hardware module has a clear role in the monitoring pipeline.</h2>
+        </div>
+        <div class="sensor-grid">
+          <article class="sensor-card">
+            <h3>MAX30102 Sensor</h3>
+            <p>Measures heart rate and SpO2 continuously, giving instant insight into oxygen saturation and pulse rate.</p>
+          </article>
+          <article class="sensor-card">
+            <h3>MLX90614 Sensor</h3>
+            <p>Captures body temperature without direct contact, supporting hygienic and comfortable measurements.</p>
+          </article>
+          <article class="sensor-card">
+            <h3>MPU6050 Sensor</h3>
+            <p>Tracks acceleration and orientation to analyze movement and identify possible fall incidents.</p>
+          </article>
+          <article class="sensor-card">
+            <h3>DS3231 RTC Module</h3>
+            <p>Adds precise timestamps to each reading so healthcare data can be logged and reviewed accurately.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section workflow" id="workflow">
+        <div class="section-heading">
+          <p class="eyebrow">How It Works</p>
+          <h2>From sensor collection to real-time dashboard visibility.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-card">
+            <span class="timeline-index">01</span>
+            <h3>Data Collection</h3>
+            <p>Sensors continuously gather patient vitals, body temperature, and motion information.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="timeline-index">02</span>
+            <h3>ESP32 Processing</h3>
+            <p>The microcontroller organizes readings, checks thresholds, and evaluates fall conditions.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="timeline-index">03</span>
+            <h3>Timestamp Recording</h3>
+            <p>The RTC module stores the exact time of each event for traceable health monitoring.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="timeline-index">04</span>
+            <h3>Cloud Transmission</h3>
+            <p>Processed data is sent wirelessly to Firebase using Wi-Fi connectivity from the ESP32.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="timeline-index">05</span>
+            <h3>Dashboard Access</h3>
+            <p>The webpage reads live values and gives doctors, caregivers, and families a clear status view.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="timeline-index">06</span>
+            <h3>Alert Response</h3>
+            <p>Abnormal values or falls can trigger alerts for fast attention and better patient safety.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section dashboard-section" id="dashboard">
+        <div class="section-heading section-heading-inline">
+          <div>
+            <p class="eyebrow">Live Dashboard</p>
+            <h2>Real-time patient monitoring interface</h2>
+          </div>
+          <div class="dashboard-meta">
+            <span class="live-dot"></span>
+            <span id="dashboardMode">Waiting for Firebase configuration</span>
+          </div>
+        </div>
+
+        <div class="dashboard-layout">
+          <div class="metrics-grid">
+            <article class="metric-card metric-heart">
+              <span class="metric-label">Heart Rate</span>
+              <strong id="heartRate">78 BPM</strong>
+              <p>Current pulse activity</p>
+            </article>
+            <article class="metric-card metric-spo2">
+              <span class="metric-label">SpO2</span>
+              <strong id="spo2">98%</strong>
+              <p>Oxygen saturation level</p>
+            </article>
+            <article class="metric-card metric-temp">
+              <span class="metric-label">Temperature</span>
+              <strong id="temperature">36.8 C</strong>
+              <p>Contactless body temperature</p>
+            </article>
+            <article class="metric-card metric-move">
+              <span class="metric-label">Movement Status</span>
+              <strong id="movementStatus">Active</strong>
+              <p id="movementStateText">Patient is currently moving normally</p>
+            </article>
+          </div>
+
+          <aside class="alert-panel">
+            <div class="alert-header">
+              <span>Emergency Monitor</span>
+              <small id="lastUpdated">Updated just now</small>
+            </div>
+            <div class="fall-status normal" id="fallStatusBox">
+              <div class="fall-indicator" id="fallIndicator">Normal</div>
+              <h3 id="fallTitle">No fall detected</h3>
+              <p id="fallMessage">Patient posture and movement pattern are within a safe range.</p>
+            </div>
+            <div class="patient-summary">
+              <h4>Dashboard Highlights</h4>
+              <ul>
+                <li>Cloud-based access for remote healthcare teams</li>
+                <li>Continuous monitoring for high-risk or elderly patients</li>
+                <li>Fast visibility into abnormal readings and fall events</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section use-cases">
+        <div class="section-heading">
+          <p class="eyebrow">Purpose Of The System</p>
+          <h2>Designed for practical healthcare situations where distance should not reduce care quality.</h2>
+        </div>
+        <div class="purpose-layout">
+          <article class="purpose-card">
+            <h3>Project Goal</h3>
+            <p>
+              This project delivers a portable and efficient telemedicine solution that supports remote patient
+              supervision using low-cost IoT hardware and a cloud-based monitoring interface.
+            </p>
+          </article>
+          <article class="purpose-card">
+            <h3>Main Benefits</h3>
+            <ul>
+              <li>Supports early detection of health issues</li>
+              <li>Improves response time during emergencies</li>
+              <li>Reduces the need for constant bedside supervision</li>
+              <li>Extends healthcare access to remote communities</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section future" id="future">
+        <div class="section-heading">
+          <p class="eyebrow">Future Scope</p>
+          <h2>Ready for expansion into a more intelligent healthcare platform.</h2>
+        </div>
+        <div class="future-grid">
+          <article class="future-card">
+            <h3>Mobile App Integration</h3>
+            <p>Extend the dashboard into Android or iOS applications for on-the-go caregiver access.</p>
+          </article>
+          <article class="future-card">
+            <h3>AI-Based Prediction</h3>
+            <p>Use machine learning to predict health risks from trends in vitals, movement, and temperature.</p>
+          </article>
+          <article class="future-card">
+            <h3>Doctor Notification System</h3>
+            <p>Send direct notifications to doctors when readings cross thresholds or a fall is detected.</p>
+          </article>
+          <article class="future-card">
+            <h3>Emergency Automation</h3>
+            <p>Trigger automatic emergency workflows for rapid support during critical incidents.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
